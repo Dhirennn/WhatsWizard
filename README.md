@@ -38,6 +38,6 @@ python analyze.py
 - wordcloud for generating word clouds.
 
 # Credits
-Pandas for data manipulation and analysis.
-Matplotlib for data visualization.
-Wordcloud for generating word clouds.
+- Pandas for data manipulation and analysis.
+- Matplotlib for data visualization.
+- Wordcloud for generating word clouds.
