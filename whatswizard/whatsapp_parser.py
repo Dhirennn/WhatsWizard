@@ -61,11 +61,62 @@ def parse_actual_file(chatlog):
     # Print the data frame for reference
     print(data)
 
+    # Convert data to CSV and store in directory
+    extracted_file_name = str(chatlog).replace('.txt', '') + "_extracted.csv"
+    data.to_csv(extracted_file_name)
 
     return data
 
 
+def enhance_data(csv_file):
+    """
+    This function converts the strings to datetime objects and adds useful columns like weekday, month sent, date and
+    hour.
 
+    :param csv_file: file to work on (WhatsApp chatlog file)
+    :return: enhanced DataFrame
+    """
+
+
+    data = pd.read_csv(csv_file)
+
+    # Dropping unnecessary columns and coverting message type to string.
+    data.drop('Unnamed: 0', inplace=True, axis=1)
+    data['message'] = data['message'].astype('str')
+
+    # Converting 'timestamp to datetime objects'
+    data["timestamp"] = pd.to_datetime(data["timestamp"], format="%d/%m/%Y, %I:%M:%S %p")
+
+    # new column weekday
+    data['weekday'] = data['timestamp'].apply(lambda x: x.day_name())
+
+    # new column month_sent
+    data['month_sent'] = data['timestamp'].apply(lambda x: x.month_name())
+
+    # column date
+    data['date'] = [d.date() for d in data['timestamp']]
+
+    # column hour
+    data['hour'] = [d.time().hour for d in data['timestamp']]
+
+    data.to_csv(str(csv_file).replace('_extracted.csv', '') + "_extracted.csv")
+
+    return data
+
+
+def run_parser(chatlog):
+    """
+    Runs the parser and returns the enhanced DataFrame.
+    :param chatlog:
+    :return:
+    """
+    parse_actual_file(chatlog)
+
+    csv_name = str(chatlog).replace('.txt', '') + "_extracted.csv"
+
+    data = enhance_data(csv_name)
+
+    return data
 
 
 if __name__ == "__main__":
@@ -74,8 +125,8 @@ if __name__ == "__main__":
     # Parse the path of the text file through the function
     # df = parse_actual_file('it_chat.txt')
 
-    # Convert the file to a CSV file
-    # df.to_csv('tester.csv')
+    # Make better csv
+    # enhance_data('')
 
 
     pass
