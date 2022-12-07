@@ -1,6 +1,8 @@
 # WhatsApp Chatlog Parser (WhatsWizard) and Statistical Analysis Tool
 
-# NOTE : THIS TOOL IS NOT READY FOR USE YET, IT IS STILL IN DEVELOPMENT AND PLANNING PHASE. THE STEPS BELOW WILL NOT WORK.
+## NOTE : THIS TOOL IS NOT READY FOR USE YET, IT IS STILL IN DEVELOPMENT AND PLANNING PHASE. THE STEPS BELOW WILL NOT WORK AND NOT MAKE SENSE.
+
+### If you wish to contribute, then read the documentation for the code inside the 'whatswizard' directory.
 
 This tool allows you to parse and analyze your WhatsApp chatlogs to uncover hidden patterns and insights.
 
