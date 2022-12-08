@@ -64,7 +64,7 @@ button = tk.Button(root, text="Parse chatlog file", command=lambda: run_parser_a
 instructions_label = tk.Label(root,
                               text="1. Place your WhatsApp chatlog file into this directory\n2. Type out the name of your "
                                    "chatlog.txt file (e.g: 'my_groupchat.txt')\n3. Click on the blue \"Parse chatlog file "
-                                   "button\"\n4. The button will turn black after the parsing has been completed."
+                                   "button\"\n4. The button will turn black, then blue after the parsing has been completed."
                                    "\n5. Click on the 'Go to next step button'.\n6. The CSV file will be in your directory.",
                               font=("Helvetica", 8), fg="maroon")
 
