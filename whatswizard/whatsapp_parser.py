@@ -35,6 +35,9 @@ def parse_actual_file(chatlog):
     # Create an empty data frame
     data = pd.DataFrame()
 
+    # Create a list then only make the data frame once
+    data_list = []
+
     try:
         # Iterate over the lines of the chat file
         for line in lines:
@@ -49,14 +52,13 @@ def parse_actual_file(chatlog):
                 sender = match.group(2)
                 message = match.group(3)
 
-                data = data.append(
-                    pd.DataFrame(
-                        {"timestamp": [timestamp], "sender": [sender], "message": [message]}
-                    ),
-                    ignore_index=True
-                )
+                data_list.append([timestamp, sender, message])
     except:
         pass
+
+    # Make the data frame
+    data = pd.DataFrame(data_list, columns=['timestamp', 'sender', 'message'])
+
 
     # Print the data frame for reference
     print(data)
